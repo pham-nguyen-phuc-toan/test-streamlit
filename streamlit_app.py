@@ -3,12 +3,29 @@ import tensorflow
 import torch
 import transformers
 
-from transformers import BertConfig, BertModel
+import os
+import openai
 
-model = transformers.BertModel.from_pretrained("bert-base-uncased")
-st.write(model)
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-pipe = transformers.pipeline("text-classification")
+response = openai.Completion.create(
+  model="text-davinci-003",
+  prompt="",
+  temperature=0.97,
+  max_tokens=4000,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
+
+st.write(response)
+
+# from transformers import BertConfig, BertModel
+
+# model = transformers.BertModel.from_pretrained("bert-base-uncased")
+# st.write(model)
+
+# pipe = transformers.pipeline("text-classification")
 
 st.write(pipe("This restaurant is awesome"))
 
