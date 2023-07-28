@@ -3,14 +3,16 @@ import numpy
 import matplotlib
 import sklearn
 import transformers
-from transformers import *
+from transformers import pipeline
+st.write(pipe("This restaurant is awesome"))
+
+pipe = pipeline("text-classification")
 
 st.title('Playground')
 
 txt = st.text_area('Input prompt', '')
 
-pipe = pipeline("text-classification")
-st.write(pipe("This restaurant is awesome"))
+
 
 st.button('Submit')
 
