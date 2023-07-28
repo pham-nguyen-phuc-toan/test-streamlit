@@ -2,6 +2,10 @@ import streamlit as st
 import tensorflow
 import transformers
 
+from transformers import BertConfig, BertModel
+
+model = transformers.BertModel.from_pretrained("bert-base-uncased")
+st.write(model)
 
 pipe = transformers.pipeline("text-classification")
 
