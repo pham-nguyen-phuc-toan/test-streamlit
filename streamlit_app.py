@@ -10,7 +10,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 response = openai.Completion.create(
   model="text-davinci-003",
-  prompt="",
+  prompt='''print "hello world"''',
   temperature=0.97,
   max_tokens=4000,
   top_p=1,
