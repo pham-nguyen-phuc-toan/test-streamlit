@@ -6,7 +6,7 @@ import transformers
 import os
 import openai
 
-openai.api_key = os.getenv("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")
+openai.api_key = "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"
 
 response = openai.Completion.create(
   model="text-davinci-003",
