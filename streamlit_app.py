@@ -3,10 +3,9 @@ import numpy
 import matplotlib
 import sklearn
 import transformers
-from transformers import pipeline
 
 
-pipe = pipeline("text-classification")
+pipe = transformers.pipeline("text-classification")
 
 st.write(pipe("This restaurant is awesome"))
 
