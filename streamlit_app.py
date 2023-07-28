@@ -5,12 +5,12 @@ import sklearn
 import transformers
 from transformers import *
 
-pipe = pipeline("text-classification")
-st.write(pipe("This restaurant is awesome"))
-
 st.title('Playground')
 
 txt = st.text_area('Input prompt', '')
+
+pipe = pipeline("text-classification")
+st.write(pipe("This restaurant is awesome"))
 
 st.button('Submit')
 
