@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy
 import matplotlib
+import sklearn
 
 st.title('Playground')
 
