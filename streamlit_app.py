@@ -2,6 +2,7 @@ import streamlit as st
 import numpy
 import matplotlib
 import sklearn
+import transformers
 
 st.title('Playground')
 
