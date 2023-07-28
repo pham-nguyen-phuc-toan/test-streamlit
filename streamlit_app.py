@@ -1,5 +1,6 @@
 import streamlit as st
 import tensorflow
+import torch
 import transformers
 
 from transformers import BertConfig, BertModel
