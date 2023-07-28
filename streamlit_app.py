@@ -4,9 +4,11 @@ import matplotlib
 import sklearn
 import transformers
 from transformers import pipeline
-st.write(pipe("This restaurant is awesome"))
+
 
 pipe = pipeline("text-classification")
+
+st.write(pipe("This restaurant is awesome"))
 
 st.title('Playground')
 
