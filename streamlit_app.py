@@ -57,10 +57,6 @@
 
 import streamlit as st
 
-st.title('This is a next level SEO app')
+st.title('Random Words Generator')
 
-st.write('Make your idea real')
-
-st.write('What is your seed keyword?')
-
-st.text_input('')
+st.write('Hello, this is a random words generator app')
