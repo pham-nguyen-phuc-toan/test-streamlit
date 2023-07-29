@@ -9,7 +9,7 @@ question=st.text_area("Input the Question Here")
 button=st.button("Generate")
 
 def response1(ques):
-    openai.api_key=st.secrets["api"]
+    openai.api_key=st.secrets["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"]
     
     response = openai.Completion.create(
         model="code-cushman-001",
