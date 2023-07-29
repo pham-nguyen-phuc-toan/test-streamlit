@@ -3,30 +3,30 @@ import tensorflow
 import torch
 import transformers
 
-# import openai
+import openai
 
-# openai.api_key = "rl8ETJa7A1xchBG5JjSET3BlbkFJxo5KNP8F911vFAxkGj5x"
+openai.api_key = "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"
 
-# response = openai.Completion.create(
-#   model="text-davinci-003",
-#   prompt='''print "hello world"''',
-#   temperature=0.97,
-#   max_tokens=4000,
-#   top_p=1,
-#   frequency_penalty=0,
-#   presence_penalty=0
-# )
+response = openai.Completion.create(
+  model="text-davinci-003",
+  prompt='''print "hello world"''',
+  temperature=0.97,
+  max_tokens=4000,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
 
-# st.write(response)
+st.write(response)
 
-from transformers import BertConfig, BertModel
+# from transformers import BertConfig, BertModel
 
-model = transformers.BertModel.from_pretrained("bert-base-uncased")
-st.write(model)
+# model = transformers.BertModel.from_pretrained("bert-base-uncased")
+# st.write(model)
 
-pipe = transformers.pipeline("text-classification")
+# pipe = transformers.pipeline("text-classification")
 
-st.write(pipe("This restaurant is awesome"))
+# st.write(pipe("This restaurant is awesome"))
 
 st.title('Playground')
 
