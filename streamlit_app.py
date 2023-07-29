@@ -2,16 +2,32 @@ import streamlit as st
 import tensorflow
 import torch
 import transformers
-import requests
+import openai
 
-r = requests.post(
-    "https://api.deepai.org/api/cute-creature-generator",
-    data={
-        'text': 'Conan',
-    },
-    headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
-)
-st.write(r.json())
+lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
+question=st.text_area("Input the Question Here")
+button=st.button("Generate")
+
+def response1(ques):
+    openai.api_key=st.secrets["api"]
+    
+    response = openai.Completion.create(
+        model="code-cushman-001",
+        prompt=f""""Give a {lang} solution for the Leetcode question 
+                    Leetcode Question: {question}
+                    {lang} Solution: """,
+        temperature=0,
+        max_tokens=1111,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+        )
+    print(response)
+    return response.choices[0].text
+
+if question and button:
+    answer=response1(question)
+    st.code(answer)
 
 # from transformers import BertConfig, BertModel
 
@@ -38,12 +54,3 @@ st.checkbox('Show probabilities')
 
 code = '''print('Hello world')'''
 st.code(code, language='python')
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-xpoints = np.array([1, 8])
-ypoints = np.array([3, 10])
-
-plt.plot(xpoints, ypoints)
-plt.show()
