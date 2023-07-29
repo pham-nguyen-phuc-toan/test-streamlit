@@ -63,4 +63,4 @@ st.write('Make your idea real')
 
 st.write('What is your seed keyword?')
 
-st.text_input()
+st.text_input('')
