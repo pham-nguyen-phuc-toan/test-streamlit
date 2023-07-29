@@ -57,6 +57,10 @@
 
 import streamlit as st
 
-st.title('Random Words Generator')
-
-st.write('Hello, this is a random words generator app')
+st.title("Random Words Generator") with st.container():
+    st.header("Random Word")
+    random_word = st.subheader("-")
+    word_meaning = st.text("Meaning: -")
+    st.write("Click the `Generate` button to generate new word")
+    if st.button("Generate"):
+        result = generate_word() 
