@@ -2,19 +2,16 @@ import streamlit as st
 import tensorflow
 import torch
 import transformers
-import openai
+import requests
 
-openai.api_key = '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'
-
-response = openai.Completion.create(
-  model="text-davinci-003",
-  prompt='''print "hello world"''',
-  temperature=0.97,
-  max_tokens=4000,
-  top_p=1,
-  frequency_penalty=0,
-  presence_penalty=0
+r = requests.post(
+    "https://api.deepai.org/api/cute-creature-generator",
+    data={
+        'text': 'Conan',
+    },
+    headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
 )
+print(r.json())
 
 st.write(response)
 
