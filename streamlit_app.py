@@ -11,9 +11,7 @@ r = requests.post(
     },
     headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
 )
-print(r.json())
-
-st.write(response)
+st.write(r.json())
 
 # from transformers import BertConfig, BertModel
 
