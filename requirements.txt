@@ -6,4 +6,4 @@ transformers
 tensorflow
 torch
 openai
-os
+os-sys
