@@ -5,7 +5,7 @@ import transformers
 
 import openai
 
-openai.api_key = ihkbN4sRyjsW8GtzlMJYT3BlbkFJjxnH64uXWDBKPm1ZWE90
+openai.api_key = 'ihkbN4sRyjsW8GtzlMJYT3BlbkFJjxnH64uXWDBKPm1ZWE90'
 
 response = openai.Completion.create(
   model="text-davinci-003",
@@ -31,8 +31,6 @@ st.write(response)
 st.title('Playground')
 
 txt = st.text_area('Input prompt', '')
-
-
 
 st.button('Submit')
 
