@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow
 import torch
 import transformers
-
+import os
 import openai
 
 openai.api_key = os.getenv("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")
