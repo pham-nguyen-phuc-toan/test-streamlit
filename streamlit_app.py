@@ -55,11 +55,19 @@
 # code = '''print('Hello world')'''
 # st.code(code, language='python')
 
+# import streamlit as st
+
+# st.title("Random Words Generator")
+# st.header("Random Word")
+# random_word = st.subheader("-")
+# word_meaning = st.text("Meaning: -")
+# st.write("Click the `Generate` button to generate new word")
+# st.button("Generate")
+
 import streamlit as st
 
-st.title("Random Words Generator")
-st.header("Random Word")
-random_word = st.subheader("-")
-word_meaning = st.text("Meaning: -")
-st.write("Click the `Generate` button to generate new word")
-st.button("Generate")
+uploaded_files = st.file_uploader("Choose an image file", accept_multiple_files=True)
+for uploaded_file in uploaded_files:
+    bytes_data = uploaded_file.read()
+    st.write("filename:", uploaded_file.name)
+    st.write(bytes_data)
