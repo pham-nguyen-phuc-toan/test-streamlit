@@ -74,6 +74,6 @@ for uploaded_file in uploaded_files:
 
 from PIL import Image
 
-image = bytes_data
+image = Image.open(uploaded_file.name)
 
 st.image(image, caption='Sunrise by the mountains')
