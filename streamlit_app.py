@@ -73,11 +73,10 @@ import numpy as np
 f = st.file_uploader("Upload a file", type=(["png"]))
 if f is not None:
     path_in = f.name
-    print(path_in)
+    st.write("filename:", f.name)
+    st.write(path_in)
 else:
     path_in = None
-
-st.write("filename:", f.name)
 
 model = ResNet50(weights='imagenet')
 img_path = path_in
