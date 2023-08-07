@@ -65,12 +65,23 @@
 # st.button("Generate")
 
 import streamlit as st
-from PIL import Image
+from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+import numpy as np
+
 
 uploaded_files = st.file_uploader("Choose an image file", accept_multiple_files=True)
 for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
     st.write(bytes_data)
-    image = Image.open(bytes_data)
-    st.image(image, caption='Sunrise by the mountains')
+
+    model = ResNet50(weights='imagenet')
+    img_path = uploaded_file.name
+    img = image.load_img(img_path, target_size=(224, 224))
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+    preds = model.predict(x)
+    st.write('Predicted:', decode_predictions(preds, top=3)[0])
