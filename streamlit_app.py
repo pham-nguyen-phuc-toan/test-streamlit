@@ -75,14 +75,13 @@ if f is not None:
     path_in = f.name
     st.write("filename:", f.name)
     st.write(path_in)
+    model = ResNet50(weights='imagenet')
+    img_path = path_in
+    img = image.load_img(img_path, target_size=(224, 224))
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+    preds = model.predict(x)
+    st.write('Predicted:', decode_predictions(preds, top=3)[0])
 else:
     path_in = None
-
-model = ResNet50(weights='imagenet')
-img_path = path_in
-img = image.load_img(img_path, target_size=(224, 224))
-x = image.img_to_array(img)
-x = np.expand_dims(x, axis=0)
-x = preprocess_input(x)
-preds = model.predict(x)
-st.write('Predicted:', decode_predictions(preds, top=3)[0])
