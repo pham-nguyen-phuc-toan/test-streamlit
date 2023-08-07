@@ -81,6 +81,6 @@ if f is not None:
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     preds = model.predict(x)
-    st.write('Predicted:', decode_predictions(preds, top=3)[0])
+    st.write('Predicted:', decode_predictions(preds, top=1)[0])
 else:
     path_in = None
