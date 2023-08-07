@@ -78,7 +78,7 @@ for uploaded_file in uploaded_files:
     st.write(bytes_data)
 
     model = ResNet50(weights='imagenet')
-    img_path = uploaded_file.name
+    img_path = uploaded_file.file_path
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
