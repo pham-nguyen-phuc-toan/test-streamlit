@@ -70,14 +70,14 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 import numpy as np
 
-f = st.file_uploader("Upload a file", type=(["tsv","csv","txt","tab","xlsx","xls"]))
+f = st.file_uploader("Upload a file", type=(["png"]))
 if f is not None:
     path_in = f.name
     print(path_in)
 else:
     path_in = None
 
-st.write("filename:", uploaded_file.name)
+st.write("filename:", f.name)
 
 model = ResNet50(weights='imagenet')
 img_path = path_in
