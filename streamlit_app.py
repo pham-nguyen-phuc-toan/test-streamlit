@@ -4,9 +4,9 @@ import torch
 import transformers
 import openai
 
-lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
-question=st.text_area("Input the Question Here")
-button=st.button("Generate")
+# lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
+# question=st.text_area("Input the Question Here")
+# button=st.button("Generate")
 
 # def response1(ques):
 #     openai.api_key=st.secrets["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"]
