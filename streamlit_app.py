@@ -3,40 +3,7 @@ import tensorflow
 import torch
 import transformers
 import openai
-
-# lang=st.selectbox("Select the Language of  the Solution:", ("Python", "C++", "Java"))
-# question=st.text_area("Input the Question Here")
-# button=st.button("Generate")
-
-# def response1(ques):
-#     openai.api_key=st.secrets["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"]
-    
-#     response = openai.Completion.create(
-#         model="code-cushman-001",
-#         prompt=f""""Give a {lang} solution for the Leetcode question 
-#                     Leetcode Question: {question}
-#                     {lang} Solution: """,
-#         temperature=0,
-#         max_tokens=1111,
-#         top_p=1,
-#         frequency_penalty=0,
-#         presence_penalty=0
-#         )
-#     print(response)
-#     return response.choices[0].text
-
-# if question and button:
-#     answer=response1(question)
-#     st.code(answer)
-
-# from transformers import BertConfig, BertModel
-
-# model = transformers.BertModel.from_pretrained("bert-base-uncased")
-# st.write(model)
-
-# pipe = transformers.pipeline("text-classification")
-
-# st.write(pipe("This restaurant is awesome"))
+import requests
 
 st.title('Playground')
 
