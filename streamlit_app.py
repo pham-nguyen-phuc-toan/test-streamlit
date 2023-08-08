@@ -20,11 +20,7 @@ if st.button('Submit'):
     }
     
     params = {
-        "prompt": '''def findSmallestSetOfVertices(self, n, edges):
-        """ :type n: int
-            :type edges: List[List[int]]
-            :rtype: List[int]
-        Return Smallest Set of Vertices."""''',
+        "prompt": prompt,
         "max_length": 128,
         "num_completions": 4
     }
