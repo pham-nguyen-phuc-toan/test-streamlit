@@ -7,17 +7,30 @@ import requests
 
 st.title('Playground')
 
-txt = st.text_area('Input prompt', '')
+prompt = st.text_area('Input prompt', '')
 
-st.button('Submit')
+max_length = st.slider('Maximum length', 1, 200, 1, 1, key=1)
 
-temp = st.slider('Temperature', 0.00, 2.00, 1.00, 0.01, key=1)
+num_completions = st.slider('Number of completions', 1, 10, 1, 1, key=2)
 
-top_p = st.slider('Top P', 0.00, 1.00, 1.00, 0.01, key=2)
+if st.button('Submit'):
+    headers = {
+        'accept': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
+    }
     
-max_len = st.slider('Maximum length', 1, 4000, 1, 1, key=3)
-
-st.checkbox('Show probabilities')
-
-code = '''print('Hello world')'''
-st.code(code, language='python')
+    params = {
+        "prompt": '''def findSmallestSetOfVertices(self, n, edges):
+        """ :type n: int
+            :type edges: List[List[int]]
+            :rtype: List[int]
+        Return Smallest Set of Vertices."""''',
+        "max_length": 128,
+        "num_completions": 4
+    }
+    
+    response = requests.post("https://7d16-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
+    response = response.json()
+    result = response['result']
+    
+    st.code(result)
