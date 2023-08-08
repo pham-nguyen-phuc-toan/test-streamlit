@@ -21,8 +21,8 @@ if st.button('Submit'):
     
     params = {
         "prompt": prompt,
-        "max_length": 128,
-        "num_completions": 4
+        "max_length": max_length,
+        "num_completions": num_completions
     }
     
     response = requests.post("https://7d16-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
