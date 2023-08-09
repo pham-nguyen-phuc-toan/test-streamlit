@@ -27,7 +27,10 @@ if st.button('Submit'):
     
     response = requests.post("https://d1b0-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
     response = response.json()
-    result = response['result']
-
-    st.write('Generated code')
-    st.code(result)
+    
+    if response['body'] != 'Internal Server Error':
+        result = response['result']
+        st.write('Generated code')
+        st.code(result)
+    else:
+        st.write('No solutions!')
