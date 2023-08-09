@@ -26,7 +26,7 @@ if st.button('Submit'):
     }
     
     response = requests.post("https://7d16-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
-    # response = response.json()
+    response = response.json()
     result = response['result']
     
     st.code(result)
