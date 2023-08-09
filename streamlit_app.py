@@ -25,7 +25,7 @@ if st.button('Submit'):
         "num_completions": num_completions
     }
     
-    response = requests.post("https://7d16-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
+    response = requests.post("https://d1b0-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
     response = response.json()
     result = response['result']
     
