@@ -5,9 +5,9 @@ import transformers
 import openai
 import requests
 
-st.title('Playground')
+st.title('Code generation')
 
-prompt = st.text_area('Input prompt', '')
+prompt = st.text_area('Input code to complete', '')
 
 max_length = st.slider('Maximum length', 1, 200, 1, 1, key=1)
 
