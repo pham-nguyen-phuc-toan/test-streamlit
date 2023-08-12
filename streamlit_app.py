@@ -36,7 +36,7 @@ if st.button('Submit'):
         st.write('No solutions!')
 
 code = '''
-    max_sum = float('-inf') #set a very small number 
+    max_sum = float('-inf')
     current_sum = 0
     
     for num in nums: 
