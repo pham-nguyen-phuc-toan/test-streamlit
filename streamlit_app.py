@@ -34,3 +34,13 @@ if st.button('Submit'):
         st.code(result)
     else:
         st.write('No solutions!')
+
+st.code("   max_sum = float('-inf') #set a very small number 
+    current_sum = 0
+    
+    for num in nums: 
+        current_sum += num
+        max_sum = max(max_sum, current_sum)
+        current_sum = max(0, current_sum) 
+        
+    return max_sum")
