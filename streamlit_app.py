@@ -35,7 +35,7 @@ if st.button('Submit'):
     else:
         st.write('No solutions!')
 
-st.code("""   max_sum = float('-inf') #set a very small number 
+code = '''max_sum = float('-inf') #set a very small number 
     current_sum = 0
     
     for num in nums: 
@@ -43,4 +43,5 @@ st.code("""   max_sum = float('-inf') #set a very small number
         max_sum = max(max_sum, current_sum)
         current_sum = max(0, current_sum) 
         
-    return max_sum""")
+    return max_sum'''
+st.code(code, language='python')
