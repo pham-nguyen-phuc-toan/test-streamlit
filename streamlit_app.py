@@ -34,25 +34,3 @@ if st.button('Submit'):
         st.code(result)
     else:
         st.write('No solutions!')
-
-code = '''
-    if len(prices) < 2:
-        return 0
-    
-    buy = prices[0] - fee
-    sell = 0
-    out = 0
-    
-    for val in prices[1:]:
-        if buy + fee > val:
-            buy = val - fee
-        elif sell + fee < val:
-            sell = val - fee
-            out += sell - buy
-            buy = val - fee
-            sell = 0
-            
-    out += sell - buy
-    return out
-    '''
-st.code(code, language='python')
