@@ -25,7 +25,7 @@ if st.button('Submit'):
         "num_completions": num_completions
     }
     
-    response = requests.post("https://6e0b-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
+    response = requests.post("https://9b6c-116-102-221-147.ngrok-free.app/chatgpt", headers=headers, params=params)
     
     if response.status_code != 500:
         response = response.json()    
