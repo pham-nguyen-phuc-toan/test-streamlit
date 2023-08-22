@@ -9,3 +9,4 @@ openai
 requests
 responses
 tensorflow
+torchvision
