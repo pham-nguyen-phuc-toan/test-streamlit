@@ -6,7 +6,7 @@ from PIL import Image
 
 
 img = st.file_uploader("Upload a file", type=(["png"]))
-if f is not None:
+if img is not None:
     vgg16_model = models.vgg16(pretrained=True)
     
     # # Apply transformations to the image
