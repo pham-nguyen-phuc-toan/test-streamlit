@@ -1,36 +1,43 @@
 import streamlit as st
-import tensorflow
+
+import torchvision.models as models
+
+vgg16 = models.vgg16(pretrained=True)
+
 import torch
-import transformers
-import openai
-import requests
+import torchvision.transforms as transforms
+from PIL import Image
 
-st.title('Code generation')
+# Load the image
+img = Image.open("image.jpg")
 
-prompt = st.text_area('Input code to complete', '')
+# Apply transformations to the image
+transform = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+img = transform(img)
 
-max_length = st.slider('Maximum length', 1, 200, 1, 1, key=1)
+# Add a batch dimension to the image
+img = img.unsqueeze(0)
 
-num_completions = st.slider('Number of completions', 1, 10, 1, 1, key=2)
+# Set the model to evaluation mode
+vgg16.eval()
 
-if st.button('Submit'):
-    headers = {
-        'accept': 'application/json',
-        'content-type': 'application/x-www-form-urlencoded',
-    }
-    
-    params = {
-        "prompt": prompt,
-        "max_length": max_length,
-        "num_completions": num_completions
-    }
-    
-    response = requests.post("https://5050-115-73-235-3.ngrok-free.app/chatgpt", headers=headers, params=params)
-    
-    if response.status_code != 500:
-        response = response.json()    
-        result = response['result']
-        st.write('Generated code')
-        st.code(result)
-    else:
-        st.write('No solutions!')
+# Pass the image through the model
+with torch.no_grad():
+    output = vgg16(img)
+
+# Get the index of the predicted class
+pred_idx = torch.argmax(output)
+
+# Get the label for the predicted class
+labels = open("imagenet_classes.txt").read().splitlines()
+label = labels[pred_idx]
+
+print(label)
