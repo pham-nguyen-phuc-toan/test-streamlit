@@ -25,7 +25,7 @@ if f is not None:
     # img = img.unsqueeze(0)
     
     # Set the model to evaluation mode
-    vgg16.eval()
+    vgg16_model.eval()
     
     # Pass the image through the model
     with torch.no_grad():
