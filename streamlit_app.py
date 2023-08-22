@@ -2,42 +2,33 @@ import streamlit as st
 import torchvision.models as models
 import torch
 import torchvision.transforms as transforms
-from PIL import Image
-
 
 img = st.file_uploader("Upload a file", type=(["png"]))
 if img is not None:
-    vgg16_model = models.vgg16(pretrained=True)
-    
-    # Apply transformations to the image
-    transform = transforms.Compose([
+    model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
+    model.eval()
+
+    input_image = img
+    preprocess = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-        )
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
-    img = transform(img)
+    input_tensor = preprocess(input_image)
+    input_batch = input_tensor.unsqueeze(0) # create a mini-batch as expected by the model
     
-    # Add a batch dimension to the image
-    img = img.unsqueeze(0)
+    # move the input and model to GPU for speed if available
+    if torch.cuda.is_available():
+        input_batch = input_batch.to('cuda')
+        model.to('cuda')
     
-    # Set the model to evaluation mode
-    vgg16_model.eval()
-    
-    # Pass the image through the model
     with torch.no_grad():
-        output = vgg16_model(img)
-    
-    # Get the index of the predicted class
-    pred_idx = torch.argmax(output)
-    
-    # Get the label for the predicted class
-    labels = open("imagenet_classes.txt").read().splitlines()
-    label = labels[pred_idx]
-    
-    st.write(label)
+        output = model(input_batch)
+    # Tensor of shape 1000, with confidence scores over Imagenet's 1000 classes
+    st.write(output[0]))
+    # The output has unnormalized scores. To get probabilities, you can run a softmax on it.
+    probabilities = torch.nn.functional.softmax(output[0], dim=0)
+    st.write(probabilities)
 else:
     path_in = None
