@@ -26,7 +26,7 @@ if img is not None:
     with torch.no_grad():
         output = model(input_batch)
     # Tensor of shape 1000, with confidence scores over Imagenet's 1000 classes
-    st.write(output[0]))
+    st.write(output[0])
     # The output has unnormalized scores. To get probabilities, you can run a softmax on it.
     probabilities = torch.nn.functional.softmax(output[0], dim=0)
     st.write(probabilities)
