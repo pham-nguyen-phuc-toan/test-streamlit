@@ -5,7 +5,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 
 
-f = st.file_uploader("Upload a file", type=(["png"]))
+img = st.file_uploader("Upload a file", type=(["png"]))
 if f is not None:
     vgg16_model = models.vgg16(pretrained=True)
     
