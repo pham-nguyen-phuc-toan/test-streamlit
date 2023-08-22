@@ -1,9 +1,5 @@
 import streamlit as st
-
 import torchvision.models as models
-
-vgg16 = models.vgg16(pretrained=True)
-
 import torch
 import torchvision.transforms as transforms
 from PIL import Image
@@ -11,6 +7,8 @@ from PIL import Image
 
 f = st.file_uploader("Upload a file", type=(["png"]))
 if f is not None:
+    vgg16_model = models.vgg16(pretrained=True)
+    
     # # Apply transformations to the image
     # transform = transforms.Compose([
     #     transforms.Resize(256),
@@ -31,7 +29,7 @@ if f is not None:
     
     # Pass the image through the model
     with torch.no_grad():
-        output = vgg16(img)
+        output = vgg16_model(img)
     
     # Get the index of the predicted class
     pred_idx = torch.argmax(output)
